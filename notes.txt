@@ -1,0 +1,14 @@
+link to live website working o
+    https://sleep-outside-64a9.onrender.com/
+
+What is devDepencies:
+    devDependencies contains all of the tools needed for development of this project. 
+
+    Running npm install referred to this list to know what to install.
+
+
+What aer scripts?
+    scripts are shortcuts to project management commands. It contains the following
+
+What is Linter?
+    Used to check if codes are correctly writen before commiting them and pushing to production
