@@ -1,13 +1,21 @@
 import { getLocalStorage } from "./utils.mjs";
 
+import { setLocalStorage } from "./utils.mjs";
+
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  document.querySelectorAll(".remove-item").forEach((item) => {
+    item.addEventListener("click", removeCartItem);
+  });
 }
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
+  <span class="remove-item" data-id="${item.Id}">X</span>
+
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
@@ -23,6 +31,20 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
+}
+
+function removeCartItem(e) {
+  const productId = e.target.dataset.id;
+
+  const cartItems = getLocalStorage("so-cart") || [];
+
+  const updatedCart = cartItems.filter(
+    (item) => item.Id !== productId
+  );
+
+  setLocalStorage("so-cart", updatedCart);
+
+  renderCartContents();
 }
 
 renderCartContents();
