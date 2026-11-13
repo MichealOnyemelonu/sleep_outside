@@ -21,16 +21,18 @@ export default class ProductList {
   }
 
   async init() {
-    // the dataSource will return a Promise...so you can use await to resolve it.
     const list = await this.dataSource.getData();
-    // next, render the list – ** future **
+    
   }
-}
 
-renderList(list) ;{
-  // const htmlStrings = list.map(productCardTemplate);
-  // this.listElement.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
 
-  // apply use new utility function instead of the commented code above
-  renderListWithTemplate(productCardTemplate, this.listElement, list);
+ renderList(list) {
+    // const htmlStrings = list.map(productCardTemplate);
+    // this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
+
+    // apply use new utility function instead of the commented code above
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
+
+  }
+
 }
