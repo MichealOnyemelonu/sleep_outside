@@ -114,6 +114,43 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
+/* Week 3 individual task, creating of categroy list to show on teh main page */
+
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: end;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.category-list li {
+  text-align: center;
+}
+
+.category-list a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-list img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.category-list h3 {
+  margin: 0.5rem 0 0;
+}
+
+/* End of category list styles */
+
 /* End utility classes */
 
 /* Cart icon styles */
@@ -261,3 +298,4 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
