@@ -51,7 +51,23 @@ export default class ShoppingCart {
         this.removeCartItem(event);
       });
     });
-  }
+
+    // Calculate and display cart total
+    const cartFooter = document.querySelector(".cart-footer");
+    const cartTotal = document.querySelector(".cart-total");
+
+    if (cartItems.length > 0) {
+      const total = cartItems.reduce(
+        (sum, item) => sum + Number(item.FinalPrice),
+        0,
+      );
+
+      cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+      cartFooter.classList.remove("hide");
+    } else {
+      cartFooter.classList.add("hide");
+    }
+    }
 
 
 // week 2 individual assignment: removeCartItem function that takes an event object as a parameter. 
@@ -71,4 +87,18 @@ export default class ShoppingCart {
 
     this.renderCartContents();
   }
+
+  renderCartTotal(cartItems) {
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.FinalPrice,
+    0,
+  );
+
+  const cartFooter = document.querySelector(".cart-footer");
+  const cartTotal = document.querySelector(".cart-total");
+
+  cartFooter.classList.remove("hide");
+  cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+}
+
 }

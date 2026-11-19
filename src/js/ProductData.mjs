@@ -11,18 +11,20 @@ function convertToJson(res) {
 export default class ProductData {
   constructor(category) {
     this.category = category;
-    this.jsonUrls = {
-      tents: new URL("../json/tents.json", import.meta.url).href
-    };
-    this.path = this.jsonUrls[this.category];
   }
-  async getData(category) {
-    const response = await fetch(`${baseURL}products/search/${category} `);
+
+  async getData() {
+    const response = await fetch(
+      `${baseURL}products/search/${this.category}`
+    );
+
     const data = await convertToJson(response);
     return data.Result;
   }
+
   async findProductById(id) {
     const products = await this.getData();
+
     return products.find((item) => item.Id === id);
   }
 }

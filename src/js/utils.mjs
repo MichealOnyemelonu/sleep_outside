@@ -41,6 +41,7 @@ export function renderListWithTemplate(template, parentElement, list, position =
 
 // week 3 team activity: renderWithTemplate function that takes a template string, a parent element, and an optional callback function. This function sets the innerHTML of the parent element to the template string and calls the callback function if it is provided.
 export function renderWithTemplate(template, parentElement, data, callback) {
+  console.log("element passed to renderWithTemplate:", parentElement);
   parentElement.innerHTML = template;
   // if clear is true we need to clear out the contents of the parent.
   if (callback) {
