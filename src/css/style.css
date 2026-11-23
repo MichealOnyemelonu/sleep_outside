@@ -282,6 +282,67 @@ button {
   display: none;
 }
 
+/* Checkout button styles */
+.checkout-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* End checkout button styles */
+
+/* Checkout page styles */
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+#checkout-form {
+  display: grid;
+  gap: 1rem;
+}
+
+#checkout-form fieldset {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+#checkout-form input {
+  padding: 0.65rem;
+}
+
+.order-summary {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  align-self: start;
+}
+
+.order-summary p {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.order-total {
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+@media screen and (max-width: 700px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* End checkout page styles */
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
