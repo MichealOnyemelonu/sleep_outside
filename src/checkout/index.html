@@ -17,11 +17,137 @@
   <body>
     <header class="divider" id="main-header"></header>
 
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
-    </main>
+    <main class="divider checkout-page">
+  <h1>Checkout</h1>
+
+  <div class="checkout-layout">
+    <form id="checkout-form">
+      <fieldset>
+        <legend>Customer Name</legend>
+
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          id="fname"
+          name="fname"
+          autocomplete="given-name"
+          required
+        />
+
+        <label for="lname">Last Name</label>
+        <input
+          type="text"
+          id="lname"
+          name="lname"
+          autocomplete="family-name"
+          required
+        />
+      </fieldset>
+
+      <fieldset>
+        <legend>Billing and Shipping Address</legend>
+
+        <label for="street">Street Address</label>
+        <input
+          type="text"
+          id="street"
+          name="street"
+          autocomplete="street-address"
+          required
+        />
+
+        <label for="city">City</label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          autocomplete="address-level2"
+          required
+        />
+
+        <label for="state">State</label>
+        <input
+          type="text"
+          id="state"
+          name="state"
+          autocomplete="address-level1"
+          required
+        />
+
+        <label for="zip">Zip Code</label>
+        <input
+          type="text"
+          id="zip"
+          name="zip"
+          autocomplete="postal-code"
+          required
+        />
+      </fieldset>
+
+      <fieldset>
+        <legend>Payment</legend>
+
+        <label for="card-number">Credit Card Number</label>
+        <input
+          type="text"
+          id="card-number"
+          name="cardNumber"
+          inputmode="numeric"
+          autocomplete="cc-number"
+          pattern="[0-9 ]{13,19}"
+          required
+        />
+
+        <label for="expiration">Expiration Date</label>
+        <input
+          type="month"
+          id="expiration"
+          name="expiration"
+          autocomplete="cc-exp"
+          required
+        />
+
+        <label for="security-code">Security Code</label>
+        <input
+          type="text"
+          id="security-code"
+          name="securityCode"
+          inputmode="numeric"
+          autocomplete="cc-csc"
+          pattern="[0-9]{3,4}"
+          maxlength="4"
+          required
+        />
+      </fieldset>
+
+      <button type="submit">Checkout</button>
+    </form>
+
+    <section class="order-summary" aria-labelledby="order-summary-title">
+      <h2 id="order-summary-title">Order Summary</h2>
+
+      <p>
+        <span>Subtotal</span>
+        <span id="subtotal">$0.00</span>
+      </p>
+
+      <p>
+        <span>Tax</span>
+        <span id="tax">$0.00</span>
+      </p>
+
+      <p>
+        <span>Shipping Estimate</span>
+        <span id="shipping">$0.00</span>
+      </p>
+
+      <p class="order-total">
+        <strong>Order Total</strong>
+        <strong id="order-total">$0.00</strong>
+      </p>
+    </section>
+  </div>
+</main>
 
     <footer id="main-footer"></footer>
   </body>
