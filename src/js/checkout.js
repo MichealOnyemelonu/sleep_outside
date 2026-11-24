@@ -36,5 +36,5 @@ checkoutForm.addEventListener("submit", (event) => {
     return;
   }
 
-  console.log("Checkout form is valid.");
+  //console.log("Checkout form is valid.");
 });
