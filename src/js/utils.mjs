@@ -71,3 +71,28 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+export function alertMessage(message, scroll = true) {
+  const alert = document.createElement("div");
+
+  alert.classList.add("alert");
+  alert.innerHTML = `<p>${message}</p><span class="alert-close">X</span>`;
+
+  alert.addEventListener("click", function (event) {
+    if (event.target.classList.contains("alert-close")) {
+      alert.remove();
+    }
+  });
+
+  document.body.prepend(alert);
+
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+
+  alerts.forEach((alert) => alert.remove());
+}
