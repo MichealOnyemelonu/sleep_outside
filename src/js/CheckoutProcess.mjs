@@ -84,7 +84,7 @@ export default class CheckoutProcess {
     try {
       await services.checkout(payload);
       setLocalStorage(this.key, []);
-      window.location.assign("/checkout/success.html");
+      window.location.assign("/checkout/");
     } catch (error) {
       removeAllAlerts();
       const messages = error.message && typeof error.message === "object"
