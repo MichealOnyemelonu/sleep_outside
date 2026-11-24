@@ -1,40 +1,18 @@
-import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import CheckoutProcess from "./CheckoutProcess.mjs";
 
-loadHeaderFooter();
+const checkout = new CheckoutProcess("so-cart", ".order-summary");
+checkout.init();
+checkout.calculateOrdertotal();
 
-const cartItems = getLocalStorage("so-cart") || [];
+document
+  .querySelector("#zip")
+  .addEventListener("blur", checkout.calculateOrdertotal.bind(checkout));
 
-const subtotal = cartItems.reduce(
-  (total, item) => total + Number(item.FinalPrice),
-  0,
-);
-
-const taxRate = 0.06;
-const tax = subtotal * taxRate;
-const shipping = subtotal > 0 ? 10 : 0;
-const orderTotal = subtotal + tax + shipping;
-
-document.querySelector("#subtotal").textContent =
-  `$${subtotal.toFixed(2)}`;
-
-document.querySelector("#tax").textContent =
-  `$${tax.toFixed(2)}`;
-
-document.querySelector("#shipping").textContent =
-  `$${shipping.toFixed(2)}`;
-
-document.querySelector("#order-total").textContent =
-  `$${orderTotal.toFixed(2)}`;
-
-const checkoutForm = document.querySelector("#checkout-form");
-
-checkoutForm.addEventListener("submit", (event) => {
+document.forms.checkout.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  if (!checkoutForm.checkValidity()) {
-    checkoutForm.reportValidity();
-    return;
+  if (event.currentTarget.checkValidity()) {
+    checkout.checkout();
+  } else {
+    event.currentTarget.reportValidity();
   }
-
-  //console.log("Checkout form is valid.");
 });
