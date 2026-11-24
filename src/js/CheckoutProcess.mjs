@@ -85,7 +85,7 @@ export default class CheckoutProcess {
   }
 
   async checkout(form) {
-    const formElement = document.forms[form];
+    const formElement = document.forms["chekout"];
     const order = formDataToJSON(formElement);
 
     order.orderDate = new Date().toISOString();
@@ -94,6 +94,15 @@ export default class CheckoutProcess {
     order.tax = this.tax.toFixed(2);
     order.items = packageItems(this.list);
 
-    return services.checkout(order);
+    try {
+      const response = await services.checkout(order);
+      console.log(response);
+      return response;
+    } catch (err) {
+      console.log("Checkout failed:", err);
+      console.log("Server message:", err.message);
+      
+    }
+
   }
 }
