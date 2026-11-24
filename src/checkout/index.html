@@ -21,7 +21,7 @@
   <h1>Checkout</h1>
 
   <div class="checkout-layout">
-    <form id="checkout-form">
+    <form id="checkout-form" name="checkout">
       <fieldset>
         <legend>Customer Name</legend>
 
@@ -111,7 +111,7 @@
         <input
           type="text"
           id="security-code"
-          name="securityCode"
+          name="code"
           inputmode="numeric"
           autocomplete="cc-csc"
           pattern="[0-9]{3,4}"
@@ -127,8 +127,13 @@
       <h2 id="order-summary-title">Order Summary</h2>
 
       <p>
+        <span>Items</span>
+        <span id="num-items">0</span>
+      </p>
+
+      <p>
         <span>Subtotal</span>
-        <span id="subtotal">$0.00</span>
+        <span id="cartTotal">$0.00</span>
       </p>
 
       <p>
@@ -141,9 +146,9 @@
         <span id="shipping">$0.00</span>
       </p>
 
-      <p class="order-total">
+      <p class="order Total">
         <strong>Order Total</strong>
-        <strong id="order-total">$0.00</strong>
+        <strong id="orderTotal">$0.00</strong>
       </p>
     </section>
   </div>
