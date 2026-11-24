@@ -14,7 +14,7 @@ const categoryName = category
 document.querySelector(".product-list-title").textContent = 
   'Top Products: ' + categoryName;
 
-const dataSource = new ProductData();
+const dataSource = new ProductData(category);
 const element = document.querySelector(".product-list");
 const listing = new ProductList(category, dataSource, element);
 
