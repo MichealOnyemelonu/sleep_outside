@@ -2,6 +2,12 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
 
+  console.log(
+    product.Name,
+    product.FinalPrice,
+    product.SuggestedRetailPrice
+  );
+
   let discount = "";
 
   if (product.FinalPrice < product.SuggestedRetailPrice) {
@@ -14,15 +20,43 @@ function productCardTemplate(product) {
     discount = `<span class="discount-badge">${discountPercent}% OFF</span>`;
   }
 
-  return `<li class="product-card">
-    <a href="product_pages/?product=">
-      <img src="" alt="Image of ">
-      <h2 class="card__brand"></h2>
-      <h3 class="card__name"></h3>
-      <p class="product-card__price">$</p>
+  return `
+    <li class="product-card">
+      <a href="/product_pages/index.html?product=${product.Id}">
+
+      <div class="product-image-container">
+        <img src="${product.Image}" alt="Image of ${product.Name}" />
+        ${discount}
+      </div>
+
+      <h2 class="card__brand">${product.Brand.Name}</h2>
+      <h3 class="card__name">${product.NameWithoutBrand}</h3>
+
+      ${
+  product.FinalPrice < product.SuggestedRetailPrice
+    ? `
+      <p class="product-card__price">
+        <span class="original-price">
+          $${product.SuggestedRetailPrice}
+        </span>
+        <span class="sale-price">
+          $${product.FinalPrice}
+        </span>
+      </p>
+    `
+    : `
+      <p class="product-card__price">
+        $${product.FinalPrice}
+      </p>
+    `
+}
+
+
     </a>
   </li>`
+  ;
 }
+
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
@@ -35,6 +69,7 @@ export default class ProductList {
 
   async init() {
     const list = await this.dataSource.getData();
+    this.renderList(list);
     
   }
 
