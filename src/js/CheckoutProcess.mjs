@@ -7,6 +7,11 @@ import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
 
+function formatExpirationDate(expiration) {
+  const [year, month] = expiration.split("-");
+  return `${Number(month)}/${year.slice(-2)}`;
+}
+
 function formDataToJSON(formElement) {
   const formData = new FormData(formElement);
   const convertedJSON = {};
@@ -75,6 +80,7 @@ export default class CheckoutProcess {
   async checkout() {
     const form = document.forms.checkout;
     const payload = formDataToJSON(form);
+    payload.expiration = formatExpirationDate(payload.expiration);
     payload.orderDate = new Date().toISOString();
     payload.orderTotal = this.orderTotal;
     payload.tax = this.tax;
